@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+    <title>SafeWave | Emergency Alert System</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                🌍 SafeWave
+            </div>
+            <ul>
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#alerts">Live Alerts</a></li>
+                <li><a href="#map">Map</a></li>
+                <li><a href="#preparedness">Preparedness</a></li>
+                <li><a href="#report">Report</a></li>
+            </ul>
+            <a href="#emergency" class="emergency-btn">
+                🚨 Emergency
+            </a>
+        </nav>
+    </header>
+    <section id="hero">
+        <div class="hero-content">
+            <h1>
+                Stay Alert.
+                <span>Stay Safe.</span>
+            </h1>
+            <p>
+                SafeWave provides real-time emergency awareness
+                for earthquakes, tsunamis, storms, floods and other
+                natural disasters.
+            </p>
+            <div class="status">
+                🟢 No Active Threats
+            </div>
+        </div>
+        <div class="status-card">
+            <h3>
+                Current Status
+            </h3>
+            <h2>
+                System Online
+            </h2>
+            <p>
+                Last Updated: 17 July 2026
+            </p>
+        </div>
+    </section>
+    <section id="alerts">
+        <h2>
+            Live Emergency Alerts
+        </h2>
+        <section id="map">
+
+            <h2>🗺 Live Disaster Map</h2>
+
+            <div id="map-container"></div>
+
+        </section>
+        <div class="cards">
+            <div class="card earthquake">
+                <h3>🌎 Earthquake Monitor</h3>
+                <p class="earthquake-status" id="earthquake-status">
+                    🟢 No Active Threat
+                </p>
+                <div class="earthquake-data">
+                    <div>
+                        📏 Magnitude
+                        <strong id="magnitude">--</strong>
+                    </div>
+                    <div>
+                        📍 Location
+                        <strong id="quake-location">Loading...</strong>
+                    </div>
+                    <div>
+                        ⏱ Time
+                        <strong id="quake-time">--</strong>
+                    </div>
+                    <div>
+                        📐 Depth
+                        <strong id="quake-depth">-- km</strong>
+                    </div>
+                </div>
+                <p id="quake-message">
+                    Monitoring global seismic activity...
+                </p>
+            </div>
+            <div class="card tsunami">
+                <h3>🌊 Tsunami Monitor</h3>
+                <p class="tsunami-status" id="tsunami-status">
+                    🟢 No Active Tsunami Warning
+                </p>
+                <div class="tsunami-data">
+                    <div>
+                        🌊 Wave Height
+                        <strong id="wave-height">-- m</strong>
+                    </div>
+                    <div>
+                        🌍 Coastal Risk
+                        <strong id="coastal-risk">Loading...</strong>
+                    </div>
+                    <div>
+                        📍 Region
+                        <strong id="region">Detecting...</strong>
+                    </div>
+                    <div>
+                        🕒 Last Updated
+                        <strong id="tsunami-time">--</strong>
+                    </div>
+                </div>
+                <p id="tsunami-message">
+                    Monitoring ocean activity...
+                </p>
+            </div>
+            <div class="card storm">
+                <h3>
+                    🌪 Storm Monitor
+                </h3>
+                <p class="storm-status" id="storm-status">
+                    🟢 Weather Conditions Normal
+                </p>
+                <div class="weather-data">
+                    <div>
+                        🌡 Temperature
+                        <strong id="temperature">
+                            --°C
+                        </strong>
+                    </div>
+                    <div>
+                        💧 Rain Chance
+                        <strong id="rain">
+                            --%
+                        </strong>
+                    </div>
+                    <div>
+                        💨 Wind Speed
+                        <strong id="wind">
+                            -- km/h
+                        </strong>
+                    </div>
+                </div>
+                <p id="storm-warning">
+                    Monitoring weather activity...
+                </p>
+            </div>
+        </div>
+    </section>
+    <section id="preparedness">
+        <h2>
+            Emergency Preparedness
+        </h2>
+        <p>
+            Learn what to do before, during and after disasters.
+        </p>
+    </section>
+    <section id="report">
+        <h2>
+            Report Emergency
+        </h2>
+        <form>
+            <input placeholder="Emergency Type">
+            <input placeholder="Location">
+            <textarea placeholder="Describe what happened"></textarea>
+            <button>
+                Submit Report
+            </button>
+        </form>
+    </section>
+    <section id="emergency">
+
+        <h2>🚨 Emergency Center</h2>
+
+
+        <div class="emergency-grid">
+
+            <div class="emergency-card">
+                <h3>📞 Emergency Contacts</h3>
+                <p>
+                    <a href="tel:191">
+                        Call Police
+                    </a>
+                <p>
+                    🚒 Fire Service:
+                    <strong>192</strong>
+                </p>
+                <p>
+                    🚑 Ambulance:
+                    <strong>193</strong>
+                </p>
+            </div>
+            <div class="emergency-card">
+                <h3>📍 Find Help Nearby</h3>
+                <p>
+                    Locate:
+                </p>
+                <button onclick="getNearestPlace('hospital')">
+                    🏥 Nearest Hospital
+                </button>
+
+                <button onclick="getNearestPlace('fire_station')">
+                    🚒 Nearest Fire Station
+                </button>
+
+                <button onclick="getNearestPlace('police')">
+                    🚓 Nearest Police Station
+                </button>
+            </div>
+            <div class="emergency-card">
+                <h3>🆘 Report Incident</h3>
+                <p>
+                    Quickly report:
+                </p>
+                <button class="danger-button">
+                    Report Emergency
+                </button>
+            </div>
+        </div>
+    </section>
+    <footer>
+        © 2026 SafeWave. Protecting communities through awareness.
+    </footer>
+    <script src="script.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+    </script>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
